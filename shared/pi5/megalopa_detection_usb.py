@@ -170,9 +170,7 @@ def choose_indexed_file(
             print("Invalid selection.")
 
     if not 1 <= selected_index <= len(files):
-        raise ValueError(
-            f"--{media_name}-index must be between 1 and {len(files)}"
-        )
+        raise ValueError(f"--{media_name}-index must be between 1 and {len(files)}")
 
     selected = files[selected_index - 1]
     print(f"Selected {media_name}:", selected.name)
@@ -190,7 +188,9 @@ def class_counts(result) -> Counter[str]:
         if isinstance(names, dict):
             name = str(names.get(class_id, f"class_{class_id}"))
         else:
-            name = str(names[class_id]) if class_id < len(names) else f"class_{class_id}"
+            name = (
+                str(names[class_id]) if class_id < len(names) else f"class_{class_id}"
+            )
         counts[name] += 1
     return counts
 
@@ -424,8 +424,15 @@ def run_image(
         fps,
     )
 
-    stem = safe_stem(source.stem)
-    output = result_dir / f"static_{stem}_detection.jpg"
+    image_tag = safe_stem(source.stem)
+    model_tag = safe_stem(model_path.stem if model_path.is_file() else model_path.name)
+    model_format = (
+        model_path.suffix.lower().lstrip(".") if model_path.is_file() else "ncnn"
+    )
+
+    output = result_dir / (
+        f"static_{image_tag}_{model_tag}_{model_format}_detection.jpg"
+    )
     if not cv2.imwrite(str(output), frame):
         raise RuntimeError(f"Unable to save result image: {output}")
 
@@ -465,11 +472,12 @@ def run_image(
 
     save_summary(
         result_dir,
-        f"static_{stem}_summary.json",
+        f"static_{image_tag}_{model_tag}_{model_format}_summary.json",
         {
             "mode": "image",
             "model_role": model_role,
             "model": relative_or_absolute(model_path, root),
+            "model_format": model_format,
             "source": relative_or_absolute(source, root),
             "confidence": conf,
             "imgsz": imgsz,
@@ -654,9 +662,7 @@ def run_video(
         writer_csv.writerows(frame_metrics)
 
     mean_detections = (
-        sum(detection_totals) / len(detection_totals)
-        if detection_totals
-        else 0.0
+        sum(detection_totals) / len(detection_totals) if detection_totals else 0.0
     )
     min_detections = min(detection_totals) if detection_totals else 0
     max_detections = max(detection_totals) if detection_totals else 0
