@@ -1,0 +1,5 @@
+image,actual_count,predicted_count,saved_result
+photo_20260615_204040_Blacklight-z2.png,,19,student_work/results/validation/supplied_images/photo_20260615_204040_Blacklight-z2_detected.jpg
+photo_20260615_203430_backlight-Z1.png,,1,student_work/results/validation/supplied_images/photo_20260615_203430_backlight-Z1_detected.jpg
+photo_20260629_103122_Crablet_2Scoop.png,,0,student_work/results/validation/supplied_images/photo_20260629_103122_Crablet_2Scoop_detected.jpg
+photo_20260629_101940_Crablet_1Scoop.png,,0,student_work/results/validation/supplied_images/photo_20260629_101940_Crablet_1Scoop_detected.jpg

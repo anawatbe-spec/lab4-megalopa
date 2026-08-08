@@ -1,0 +1,11 @@
+{
+  "source_video": "megalopa_validation.mp4",
+  "processed_frames": 430,
+  "source_fps": 14.360980914972748,
+  "processed_duration_seconds": 29.942244373549883,
+  "processing_seconds": 90.64734272499982,
+  "average_processing_fps": 4.743658082780285,
+  "average_predicted_count": 5.17906976744186,
+  "confidence": 0.1,
+  "output_video": "student_work/results/validation/megalopa_validation_annotated_h264.mp4"
+}

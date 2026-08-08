@@ -1,0 +1,14 @@
+{
+  "group_members": "Anawat Benjalak",
+  "section": 1,
+  "group": 1,
+  "fork_url": "https://github.com/anawatbe-spec/lab4-megalopa.git",
+  "github_username_for_push": "anawatbe-spec",
+  "model_pt": "student_work/models/sec01_group01_megalopa_yolo26n_best.pt",
+  "model_onnx": "student_work/models/sec01_group01_megalopa_yolo26n_best.onnx",
+  "Precision": 0.8345198102059329,
+  "Recall": 0.26153846153846155,
+  "mAP@50": 0.2946837244979744,
+  "mAP@50-95": 0.164462974309602,
+  "Training time (seconds)": 1852.486401449
+}
